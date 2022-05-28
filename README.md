@@ -2,6 +2,8 @@
 
 A starter project for compiling and using shaders on your local machine. This example was written on M1 Macbook. If your system is different these steps could very well fail. PR's welcome.
 
+Huge shout to Jochum van der Ploeg, who wrote [this](https://wolfenrain.medium.com/flutter-shaders-an-initial-look-d9eb98d3fd7a) article, and did a lot of the heavy lifting for me.
+
 Steps:
 1. Open the project with VSCode. Recommended suggestions will appear if you're opening the project for the first time - these may make your life easier. I recommend installing.
 2. Download the latest `glslc` from `https://github.com/google/shaderc/blob/main/downloads.md` (A Google package). Unzip and add the `bin` folder to your `PATH` (for me, I added `export PATH="$HOME/Programs/glslc/bin/:$PATH"` to my `.bash_profile`.) 
