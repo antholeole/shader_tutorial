@@ -4,14 +4,20 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+const shaderName = 'simple';
+
 void main() async {
-  // Ensure bindings are initialized otherwise we can't user rootBundle.
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(FutureBuilder<Shader>(
+      // [FragmentProgram] takes a compiles spirv shader and outputs a flutter-usable
+      // shader.
       future: FragmentProgram.compile(
-        spirv: (await rootBundle.load('assets/shaders/simple.sprv')).buffer,
+        // here we pass in our compiled shader binary from assets.
+        spirv:
+            (await rootBundle.load('assets/shaders/$shaderName.sprv')).buffer,
       ).then((fragmentProgram) => fragmentProgram.shader(
+          //shaders can take input paramaters; simple.glsl
           floatUniforms: Float32List.fromList(<double>[15]))),
       builder: ((context, snapshot) {
         if (snapshot.data != null) {
